@@ -12,7 +12,7 @@
 
         <form action="/monster" method="post">
             <label>Nombre <input type="text" name="name" required></label>
-            <label>Poder <input type="text" name="power" required></label>
+            <label>Poder o URL de imagen <input type="text" name="power" required></label>
             <button type="submit">Agregar</button>
         </form>
 
@@ -20,11 +20,19 @@
             <tr>
                 <th>Nombre</th>
                 <th>Poder</th>
+                <th>Acciones</th>
             </tr>
             {% for monster in monsters %}
             <tr>
                 <td>{{ monster.name }}</td>
-                <td>{{ monster.power }}</td>
+                <td>
+                    {% if monster.power.startswith('https://') or monster.power.startswith('http://') %}
+                        <img class="power-image" src="{{ monster.power }}" alt="Poder de {{ monster.name }}" loading="lazy">
+                    {% else %}
+                        {{ monster.power }}
+                    {% endif %}
+                </td>
+                <td><a href="{{ url_for('edit_monster', monster_id=monster.id) }}">Editar</a></td>
             </tr>
             {% endfor %}
         </table>

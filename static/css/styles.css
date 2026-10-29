@@ -93,3 +93,11 @@ th {
 tr:nth-child(even) td {
     background: #2e2e3d;
 }
+
+.power-image {
+    display: block;
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+}

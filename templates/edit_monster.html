@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar monstruo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Editar monstruo</h1>
+
+        <form action="{{ url_for('edit_monster', monster_id=monster.id) }}" method="post">
+            <label>Nombre <input type="text" name="name" value="{{ monster.name }}" required></label>
+            <label>Poder o URL de imagen <input type="text" name="power" value="{{ monster.power }}" required></label>
+            <button type="submit">Guardar cambios</button>
+            <a href="{{ url_for('index') }}">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>
