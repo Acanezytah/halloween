@@ -20,6 +20,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Poder</th>
+                <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
             {% for monster in monsters %}
@@ -30,6 +31,13 @@
                         <img class="power-image" src="{{ monster.power }}" alt="Poder de {{ monster.name }}" loading="lazy">
                     {% else %}
                         {{ monster.power }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if monster.power.startswith('https://') or monster.power.startswith('http://') %}
+                        <img class="power-image" src="{{ monster.power }}" alt="Poder de {{ monster.name }}" loading="lazy">
+                    {% else %}
+                        No hay imagen
                     {% endif %}
                 </td>
                 <td><a href="{{ url_for('edit_monster', monster_id=monster.id) }}">Editar</a></td>
